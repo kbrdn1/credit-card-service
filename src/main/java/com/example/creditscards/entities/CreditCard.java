@@ -1,7 +1,8 @@
-package com.example.creditscards.entity;
+package com.example.creditscards.entities;
 
 import com.example.creditscards.interfaces.ICard;
-import com.example.creditscards.model.PaymentNetwork;
+import com.example.creditscards.models.DebitMode;
+import com.example.creditscards.models.PaymentNetwork;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ import lombok.NonNull;
 import java.util.Date;
 
 @Entity
-public abstract class AbstractCard implements ICard {
+public class CreditCard implements ICard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,9 +40,6 @@ public abstract class AbstractCard implements ICard {
     @NonNull
     private String cvv;
 
-    @NonNull
-    private double balance;
-
     @Positive
     private double withdrawLimit;
 
@@ -53,18 +51,13 @@ public abstract class AbstractCard implements ICard {
     private String pinCode;
 
     @PositiveOrZero
-    @NonNull
     private double withoutContactPaymentLimit;
 
     @NonNull
     private PaymentNetwork paymentNetwork;
 
-    @Override
-    public double credit(double amount) {
-        this.balance += amount;
-
-        return balance;
-    }
+    @NonNull
+    private DebitMode debitMode;
 
     @Override
     public void block(Date date) {
@@ -89,5 +82,15 @@ public abstract class AbstractCard implements ICard {
     @Override
     public double getPaymentLimit() {
         return paymentLimit;
+    }
+
+    @Override
+    public void setDebitMode(@NonNull DebitMode debitMode) {
+        this.debitMode = debitMode;
+    }
+
+    @Override
+    public @NonNull DebitMode getDebitMode() {
+        return this.debitMode;
     }
 }
