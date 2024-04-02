@@ -7,36 +7,35 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class CreditCard implements ICard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @NonNull
     private String number;
 
-    @NotBlank
     @NonNull
     private String lastname;
 
-    @NotBlank
     @NonNull
     private String firstname;
 
     @NonNull
     private Date expirationDate;
 
-    @NotBlank
     @NonNull
     private String cvv;
 
@@ -48,6 +47,7 @@ public class CreditCard implements ICard {
 
     private Date bloquedDate;
 
+    @NonNull
     private String pinCode;
 
     @PositiveOrZero
