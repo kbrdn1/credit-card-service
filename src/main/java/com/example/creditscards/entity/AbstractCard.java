@@ -13,7 +13,7 @@ import lombok.NonNull;
 import java.util.Date;
 
 @Entity
-public class Card {
+public abstract class AbstractCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
