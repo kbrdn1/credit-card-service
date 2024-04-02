@@ -1,5 +1,6 @@
 package com.example.creditscards.entity;
 
+import com.example.creditscards.interfaces.ICard;
 import com.example.creditscards.model.PaymentNetwork;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,38 +14,80 @@ import lombok.NonNull;
 import java.util.Date;
 
 @Entity
-public abstract class AbstractCard {
+public abstract class AbstractCard implements ICard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     @NonNull
     private String number;
+
     @NotBlank
     @NonNull
     private String lastname;
+
     @NotBlank
     @NonNull
     private String firstname;
+
     @NonNull
     private Date expirationDate;
+
     @NotBlank
     @NonNull
     private String cvv;
+
     @NonNull
     private double balance;
+
     @Positive
     private double withdrawLimit;
+
     @Positive
     private double paymentLimit;
+
     private Date bloquedDate;
-    private Date diferredDebitDate;
+
     private String pinCode;
+
     @PositiveOrZero
     @NonNull
     private double withoutContactPaymentLimit;
+
     @NonNull
     private PaymentNetwork paymentNetwork;
 
+    @Override
+    public double credit(double amount) {
+        this.balance += amount;
+
+        return balance;
+    }
+
+    @Override
+    public void block(Date date) {
+        this.bloquedDate = date;
+    }
+
+    @Override
+    public void setWithdrawLimit(double withdrawLimit) {
+        this.withdrawLimit = withdrawLimit;
+    }
+
+    @Override
+    public double getWithdrawLimit() {
+        return withdrawLimit;
+    }
+
+    @Override
+    public void setPaymentLimit(double paymentLimit) {
+        this.paymentLimit = paymentLimit;
+    }
+
+    @Override
+    public double getPaymentLimit() {
+        return paymentLimit;
+    }
 }
