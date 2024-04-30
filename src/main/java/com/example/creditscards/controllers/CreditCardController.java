@@ -22,17 +22,17 @@ public class CreditCardController {
         this.creditCardService = creditCardService;
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<CreditCard> getCreditCardById(@PathVariable Long id) {
         return new ResponseEntity<>(creditCardService.getCreditCardById(id), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<CreditCard>> getAllCreditCards() {
         return new ResponseEntity<>(creditCardService.getAll(), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<CreditCard> createCreditCard(@RequestBody CreditCard creditCard) {
         CreditCard createdCard = creditCardService.createCreditCard(creditCard);
         return new ResponseEntity<>(createdCard, HttpStatus.CREATED);

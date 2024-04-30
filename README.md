@@ -38,15 +38,16 @@ docker compose down
 ## API Reference
 > Base URL: http://localhost:8080/credit-cards
 
-| Method | Path | Parameters | Description |
-| --- | --- | --- | --- |
-| GET | / | | Get all credit cards |
-| POST | / | | Create a new credit card |
-| GET | /{id}/block | | Block a credit card |
-| GET | /{id}/unblock | | Unblock a credit card |
-| PUT | /{id}/payment-limit | limit: double | Update payment limit |
+| Method | Path                 | Parameters | Description |
+| --- |----------------------| --- | --- |
+| GET | /{id}                | | Get a credit card by id |
+| GET | /getAll              | | Get all credit cards |
+| POST | /create              | | Create a new credit card |
+| GET | /{id}/block          | | Block a credit card |
+| GET | /{id}/unblock        | | Unblock a credit card |
+| PUT | /{id}/payment-limit  | limit: double | Update payment limit |
 | PUT | /{id}/withdraw-limit | limit: double | Update withdraw limit |
-| PUT | /{id}/debit-mode | mode: `IMMEDIATE` | `DEFERRED` | Update debit mode |
+| PUT | /{id}/debit-mode     | mode: `IMMEDIATE` | `DEFERRED` | Update debit mode |
 
 ## Contact
 
