@@ -15,8 +15,11 @@ import java.util.Optional;
 @Transactional
 public class CreditCardService {
 
-    @Autowired
-    private CreditCardRepository creditCardRepository;
+    private final CreditCardRepository creditCardRepository;
+
+    public CreditCardService(CreditCardRepository creditCardRepository) {
+        this.creditCardRepository = creditCardRepository;
+    }
 
     public List<CreditCard> getAll() {
         return creditCardRepository.findAll();
