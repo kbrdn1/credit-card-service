@@ -21,6 +21,9 @@ public class CreditCardService {
         this.creditCardRepository = creditCardRepository;
     }
 
+    public CreditCard getCreditCardById(Long id) {
+        return creditCardRepository.findById(id).orElse(null);
+    }
     public List<CreditCard> getAll() {
         return creditCardRepository.findAll();
     }

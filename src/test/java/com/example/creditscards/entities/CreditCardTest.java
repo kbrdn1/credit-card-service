@@ -13,26 +13,26 @@ class CreditCardTest {
     private CreditCard creditCard;
 
     @BeforeEach
-    void setUp() {
+    void testSetUp() {
         creditCard = new CreditCard();
     }
 
     @Test
-    void block() {
+    void testBlock() {
         Date blockDate = new Date();
         creditCard.block(blockDate);
         assertEquals(blockDate, creditCard.getBloquedDate());
     }
 
     @Test
-    void setWithdrawLimit() {
+    void testSetWithdrawLimit() {
         double withdrawLimit = 1000;
         creditCard.setWithdrawLimit(withdrawLimit);
         assertEquals(withdrawLimit, creditCard.getWithdrawLimit());
     }
 
     @Test
-    void setPaymentLimit() {
+    void testSetPaymentLimit() {
         double paymentLimit = 1000;
         creditCard.setPaymentLimit(paymentLimit);
         assertEquals(paymentLimit, creditCard.getPaymentLimit());
@@ -40,7 +40,7 @@ class CreditCardTest {
 
 
     @Test
-    void setDebitMode() {
+    void testSetDebitMode() {
         DebitMode debitMode = DebitMode.IMMEDIATE;
         creditCard.setDebitMode(debitMode);
         assertEquals(debitMode, creditCard.getDebitMode());

@@ -83,4 +83,10 @@ public class CreditCardServiceTest {
         creditCardService.updateDebitMode(1L, DebitMode.DEFERRED);
         assertEquals(DebitMode.DEFERRED, creditCard.getDebitMode());
     }
+
+    @Test void testGetCreditCardById() {
+        when(creditCardRepository.findById(1L)).thenReturn(java.util.Optional.of(creditCard));
+        CreditCard card = creditCardService.getCreditCardById(1L);
+        assertEquals(creditCard, card);
+    }
 }

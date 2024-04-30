@@ -16,8 +16,16 @@ import java.util.List;
 @RequestMapping("/credit-cards")
 public class CreditCardController {
 
-    @Autowired
-    private CreditCardService creditCardService;
+    private final CreditCardService creditCardService;
+
+    public CreditCardController(CreditCardService creditCardService) {
+        this.creditCardService = creditCardService;
+    }
+
+    @GetMapping
+    public ResponseEntity<CreditCard> getCreditCardById(@PathVariable Long id) {
+        return new ResponseEntity<>(creditCardService.getCreditCardById(id), HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<CreditCard>> getAllCreditCards() {
