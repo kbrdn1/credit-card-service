@@ -39,7 +39,7 @@ docker compose down
 > Base URL: http://localhost:8080/credit-cards
 
 | Method | Path | Parameters | Description |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | GET | / | | Get all credit cards |
 | POST | / | | Create a new credit card |
 | GET | /{id}/block | | Block a credit card |
