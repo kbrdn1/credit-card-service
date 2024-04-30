@@ -1,6 +1,8 @@
 # Credit card service
 A service to manage credit cards.
 
+> Use this microservice with the [auth-service](https://github.com/CanseFr/bank-microservice-auth) microservice for authentication.
+
 ## Stack
 - Java 17 or higher
 - Maven 4.0
@@ -38,6 +40,8 @@ docker compose down
 ## API Reference
 > Base URL: http://localhost:8080/credit-cards
 
+> Use with Header `Authorization: {token}` on each endpoint
+
 | Method | Path | Parameters | Description |
 | --- | --- | --- | --- |
 | GET | / | | Get all credit cards |
@@ -50,7 +54,10 @@ docker compose down
 
 ## Contact
 
-AHARAG Mariane - @marianehrg
-AROLDI Romain - @RomainAROLDI
-BARDINI Kylian - @kbrdn1
-DAVID Gremini - @Davidiums
+AHARAG Mariane - [@marianehrg](https://github.com/marianehrg)
+
+AROLDI Romain - [@RomainAROLDI](https://github.com/RomainAROLDI)
+
+BARDINI Kylian - [@kbrdn1](https://github.com/kbrdn1)
+
+DAVID Gremini - [@Davidiums](https://github.com/Davidiums)
